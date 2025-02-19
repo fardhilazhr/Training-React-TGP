@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reactive DOM Input and Label</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    // JavaScript DOM Manual Implementation
+    // Root element
+    const root = document.getElementById("root");
+
+    // Create wrapper container
+    const container = document.createElement("div");
+
+    // Create label element
+    const label = document.createElement("strong");
+    label.textContent = "Enter Text: ";
+    container.appendChild(label);
+
+    // Create input element
+    const input = document.createElement("input");
+    input.type = "text";
+    input.id = "userInput";
+    container.appendChild(input);
+
+    // Create output paragraph
+    const output = document.createElement("p");
+    output.style.marginTop = "20px";
+
+    const outputLabel = document.createElement("strong");
+    outputLabel.textContent = "Output: ";
+    output.appendChild(outputLabel);
+
+    const outputValue = document.createTextNode(""); // Text node for the dynamic value
+    output.appendChild(outputValue);
+
+    container.appendChild(output);
+
+    // Append everything to the root
+    root.appendChild(container);
+
+    // Add event listener for input changes
+    input.addEventListener("input", (event) => {
+      // Update the output text
+      outputValue.nodeValue = event.target.value;
+    });
+  </script>
+</body>
+</html>
